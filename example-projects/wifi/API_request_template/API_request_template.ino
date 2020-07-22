@@ -25,23 +25,14 @@
 
 //---------------------------------------------------------------------------------------------------------------------------------------
 // Libraries
-#ifdef ARDUINO_SAMD_ZERO
-#pragma message "You are Using the Feather M0"
-#include <WiFi101.h>
-#endif
-
-#ifdef ARDUINO_SAMD_NANO_33_IOT
-#pragma message "You are Using the IoT Nano 33"
 #include <WiFiNINA.h>
-#endif
-
 #include <ArduinoJson.h>
 //---------------------------------------------------------------------------------------------------------------------------------------
 const unsigned int CHARACTER_LIMIT= 10000; // Limit of characters in HTTP response
 //---------------------------------------------------------------------------------------------------------------------------------------
 // WiFi Connection
-const char* ssid = "Major Crimes";          // replace these with the name and password for your local wi-fi network
-const char* password = "The Bunk";
+const char* ssid = "YOUR_SSID";          // replace these with the name and password for your local wi-fi network
+const char* password = "YOUR_WIFI_PASSWORD";
 //---------------------------------------------------------------------------------------------------------------------------------------
 // API
 String host = "raw.githubusercontent.com";

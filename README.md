@@ -26,6 +26,8 @@ Documentation and Code Examples for Design Informatics Home Kit
 			- [List of APIs](#list-of-apis)
 		- [IFTTT](#ifttt)
 		- [ThingSpeak](#thingspeak)
+	- [Extras](#extras)
+		- [Nano Pinout](#nano-pinout)
 
 <!-- /TOC -->
 
@@ -116,3 +118,11 @@ See the Public list APIs.
 Connect the Arduino to an IFTTT recipe
 
 ### ThingSpeak
+
+## Extras
+
+Some extra tidbits to make life easier
+
+### Nano Pinout
+
+Pins on the nano are labelled in such small typeface it can be difficult to read. [This .pdf](./extras/Nano_33_IoT_Pinout_cheatsheet.pdf) can be printed out, placed over your breadboard and the Arduino can plugged in on top. Get creative and try making your own.
