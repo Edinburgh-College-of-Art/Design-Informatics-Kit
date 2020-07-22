@@ -27,24 +27,28 @@ Documentation and Code Examples for Design Informatics Home Kit
 
 <!-- /TOC -->
 
+
+
 ## Whats in the kit
 
 list of components
 
+
 | Component                | documentation | Use case |
 | ------------------------ | ------------- | -------- |
-| Arduino Nano 33 IoT      |               |          |
+| Arduino Nano 33 IoT      | [Getting started with the Arduino NANO 33 IoT](https://www.arduino.cc/en/Guide/NANO33IoT)          |          |
 | Servo                    |               |          |
-| Temperature Sensor       |               |          |
+| Temperature Sensor       | [Grove DHT11](https://wiki.seeedstudio.com/Grove-TemperatureAndHumidity_Sensor/)              |          |
 | Display + SD Card holder |               |          |
 | RFID                     |               |          |
 | Copper tape              |               |          |
 | Velostat                 |               |          |
-| Buttons                  |               |          |
-| NeoPixel Ring            |               |          |
+| Buttons                  |      [Grove Dual Buttons](https://wiki.seeedstudio.com/Grove-Dual-Button/)         |          |
+| NeoPixel Ring            |      [The Magic of NeoPixels](https://learn.adafruit.com/adafruit-neopixel-uberguide/the-magic-of-neopixels)         |          |
 | conductive fabric        |               |          |
 | conductive thread        |               |          |
 | Polymorph                |               |          |
+
 
 ## Additional notes
 
