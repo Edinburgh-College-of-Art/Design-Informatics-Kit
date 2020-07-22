@@ -39,9 +39,9 @@ String host = "raw.githubusercontent.com";
 String url = "/Edinburgh-College-of-Art/Connected-Things/master/example-code/json/example-data.json";
 //---------------------------------------------------------------------------------------------------------------------------------------
 // WiFi Client
-//WiFiSSLClient sslClient;  // HTTPS
+WiFiSSLClient client;  // HTTPS
 //WiFiClient client;        // HTTP
-//char httpResponse[CHARACTER_LIMIT]; // If you are getting responses larger that 10kB, use another request.
+char httpResponse[CHARACTER_LIMIT]; // If you are getting responses larger that 10kB, use another request.
 //---------------------------------------------------------------------------------------------------------------------------------------
 // Timer
 //unsigned long updateTimer = 300000;
@@ -53,13 +53,12 @@ void setup()
   {} // This line is blocking, remove it when you are finished
 
   connectToWifi(ssid, password);
+  JsonObject json = makeAPIcall(host, url, client, 443);
 
-//  JsonObject json = makeAPIcall(host, url, client, 443);
-//
-//  String someData = json["say"]["hello"][2]["json"]; // This will change depending on the API of course
-//
-//  Serial.println("\n\nSome Data: ");
-//  Serial.println(someData);
+  String someData = json["say"]["hello"][2]["json"]; // This will change depending on the API of course
+
+  Serial.println("\n\nSome Data: ");
+  Serial.println(someData);
   Serial.println("Now Get to Work!");
   haltFirmware();
 }
