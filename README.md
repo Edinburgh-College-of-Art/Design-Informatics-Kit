@@ -54,6 +54,11 @@ Get Arduinos talking with MQTT to send data (e.g. from a knob or or temp sensor)
 
 Send the output of a sensor to a cloud service for later analysis
 
+Services:
+
+- Adafruit IO
+- ThingSpeak
+
 ### Talk to Phone
 
 Send some data to a phone app, or respond to it in some way – pretend to be a smart light?
