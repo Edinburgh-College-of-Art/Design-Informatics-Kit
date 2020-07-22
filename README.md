@@ -9,6 +9,7 @@ Documentation and Code Examples for Design Informatics Home Kit
 - [Design-Informatics-Kit](#design-informatics-kit)
 	- [Contents](#contents)
 	- [Whats in the kit](#whats-in-the-kit)
+	- [Setup](#setup)
 	- [Additional notes](#additional-notes)
 	- [Code Examples](#code-examples)
 		- [Sensors](#sensors)
@@ -22,6 +23,7 @@ Documentation and Code Examples for Design Informatics Home Kit
 			- [Sensor Logger](#sensor-logger)
 		- [Chat Server](#chat-server)
 		- [APIs](#apis)
+			- [List of APIs](#list-of-apis)
 		- [IFTTT](#ifttt)
 		- [ThingSpeak](#thingspeak)
 
@@ -30,7 +32,6 @@ Documentation and Code Examples for Design Informatics Home Kit
 
 
 ## Whats in the kit
-
 list of components
 
 
@@ -49,6 +50,10 @@ list of components
 | conductive thread        |               |          |
 | Polymorph                |               |          |
 
+
+## Setup
+
+See the [Getting Started guide](./getting-started.md) for instructions on setting up to use your kit.
 
 ## Additional notes
 
@@ -101,6 +106,10 @@ Services:
 Take text over the serial input, display it on the screen and send it out over MQTT. Display incoming text on the display in a different colour
 
 ### APIs
+
+#### List of APIs
+
+See the Public list APIs.
 
 ### IFTTT
 
