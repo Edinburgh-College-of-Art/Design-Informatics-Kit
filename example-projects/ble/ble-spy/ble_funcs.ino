@@ -2,41 +2,6 @@
    Helper Functions for working worth BLE
 */
 
-void getPeripheralInfo(BLEDevice& peripheral)
-{
-
-  //  Serial.print(peripheral.discoverAttributes());
-  //  peripheral.discoverService();
-  "7a:d3:ff:ee:95:65";
-
-
-  if (peripheral.address().equals("61:cb:f4:0d:90:11"))
-  {
-    BLE.stopScan();
-    Serial.println("DEVICE!");
-    while (!peripheral.connected())
-    {
-      peripheral.connect();
-      delay(500);
-    }
-    Serial.println("Connected!");
-  }
-
-  //  if (peripheral.hasAdvertisedServiceUuid())
-  //  {
-  //    for (int i = 0; i < peripheral.advertisedServiceUuidCount(); i++)
-  //    {
-  //      BLEService service = peripheral.service(peripheral.advertisedServiceUuid(i).c_str());
-  //      Serial.print(peripheral.advertisedServiceUuid(i));
-  //      Serial.print(" ");
-  //      Serial.print(service.characteristicCount());
-  ////      Serial.print(peripheral.discoverService(peripheral.advertisedServiceUuid(i).c_str()));
-  ////      Serial.print(peripheral.hasService(peripheral.advertisedServiceUuid(i).c_str()));
-  //    }
-  //  }
-  //  Serial.println();
-}
-
 void explorerPeripheral(BLEDevice peripheral)
 {
   BLE.stopScan();
