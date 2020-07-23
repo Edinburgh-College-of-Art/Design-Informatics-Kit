@@ -1,25 +1,29 @@
-unsigned int makeGetRequest(String &host, String &url, Client &httpClient, int port, bool &chunked)
+//---------------------------------------------------------------------------------------------------------------------------------------
+unsigned int makeGetRequest(String &host, String &url, WiFiClient &client, int port)
 {
   Serial.println(((port == 443) ? ("https://") : ("http://")) + host + url);
-  unsigned int contentLength;
-  chunked = false;
 
-  if (httpClient.connect(host.c_str(), port))
+  if (client.connect(host.c_str(), port))
   {
-    httpClient.println("GET " + url + " HTTP/1.1");
-    httpClient.println("Host: " + host);
-    httpClient.println("Connection: close");
-    httpClient.println();
+    delay(1000);
+    client.println("GET " + url + " HTTP/1.1");
+    client.println("Host: " + host);
+    client.println("Connection: close");
+    client.println();
   }
   else
   {
-    Serial.println("Connection Failed; check:\n\t- did WiFi Connect?\n\t- is the site HTTPS?\n\t- have you used the correct client? v(WiFiClient or WiFiSSLClient)\n\t- have you selected the correct port? (80 or 443)\n");
+    Serial.println("Connection Failed; check:\n\t- did WiFi Connect?\n\t- is the site HTTPS?\n\t- have you used the correct client? (WiFiClient or WiFiSSLClient)\n\t- have you selected the correct port? (80 or 443)n\t- Do you need to upload any certificates?");
     haltFirmware();
   }
+  delay(3000);
 
-  while (httpClient.connected())
+  unsigned int contentLength = 0;
+
+  Serial.println("------------ Http Header  ------------");
+  while (client.connected())
   {
-    String line = httpClient.readStringUntil('\n');
+    String line = client.readStringUntil('\n');
     Serial.println(line);
     if (line.startsWith("Content-Length: "))
     {
@@ -35,16 +39,18 @@ unsigned int makeGetRequest(String &host, String &url, Client &httpClient, int p
       break;
     }
   }
+
   return contentLength;
 }
-JsonObject makeAPIcall(String & host, String & url, Client &httpClient, int port)
+//---------------------------------------------------------------------------------------------------------------------------------------
+JsonObject makeAPIcall(String & host, String & url, WiFiSSLClient &httpClient, int port)
 {
-  bool chunked = false;
-  int contentLength = makeGetRequest(host, url, httpClient, port, chunked);
+  int contentLength = makeGetRequest(host, url, httpClient, port);
   unsigned int charCount;
   if (chunked)
   {
-    charCount = parseChunked(httpClient);
+    //    charCount = parseChunked(httpClient);
+    haltFirmware();
   }
   else if (contentLength > CHARACTER_LIMIT)
   {
@@ -57,18 +63,18 @@ JsonObject makeAPIcall(String & host, String & url, Client &httpClient, int port
   {
     charCount = parseContent(contentLength, httpClient);
   }
-
+  Serial.println("------------ HttpResponse ------------");
   printHttpResponse(charCount);
-
-  DynamicJsonDocument buffer(charCount);
-  deserializeJson(buffer, httpResponse);
+  Serial.println("--------------------------------------");
+  DynamicJsonDocument buffer(charCount + 100);
+  deserializeJson(buffer, httpResponse);  
   return buffer.as < JsonObject > ();
 }
 //---------------------------------------------------------------------------------------------------------------------------------------
-
+//
 unsigned int getContentLength(String line)
 {
-  return line.substring(16).toInt(); // This line prints out the response from Carbon Intensity to the Serial Monitor – this will let you know if your request was successful
+  return line.substring(16).toInt();
 }
 //---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -87,6 +93,7 @@ unsigned int parseChunked(Client &httpClient)
   while (true)
   {
     char t = httpClient.read();
+    Serial.print(t);
     if (t != 255)
     {
       if (p == '0')
@@ -122,6 +129,7 @@ unsigned int parseContent(unsigned int contentLength, Client &httpClient)
 {
   unsigned int byteCounter = 0;
   unsigned int charCounter = 0;
+  char p = '\0';
   while (true)
   {
     char t = httpClient.read();
@@ -133,6 +141,7 @@ unsigned int parseContent(unsigned int contentLength, Client &httpClient)
         httpResponse[charCounter] = t;
         charCounter++;
       }
+
       byteCounter++;
       if (byteCounter == contentLength)
       {
@@ -140,6 +149,7 @@ unsigned int parseContent(unsigned int contentLength, Client &httpClient)
         break;
       }
     }
+    p = t;
   }
   return charCounter;
 }
