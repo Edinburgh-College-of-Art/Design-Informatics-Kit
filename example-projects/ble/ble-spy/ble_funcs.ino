@@ -2,46 +2,81 @@
    Helper Functions for working worth BLE
 */
 
+void getPeripheralInfo(BLEDevice& peripheral)
+{
+
+  //  Serial.print(peripheral.discoverAttributes());
+  //  peripheral.discoverService();
+  "7a:d3:ff:ee:95:65";
+
+
+  if (peripheral.address().equals("61:cb:f4:0d:90:11"))
+  {
+    BLE.stopScan();
+    Serial.println("DEVICE!");
+    while (!peripheral.connected())
+    {
+      peripheral.connect();
+      delay(500);
+    }
+    Serial.println("Connected!");
+  }
+
+  //  if (peripheral.hasAdvertisedServiceUuid())
+  //  {
+  //    for (int i = 0; i < peripheral.advertisedServiceUuidCount(); i++)
+  //    {
+  //      BLEService service = peripheral.service(peripheral.advertisedServiceUuid(i).c_str());
+  //      Serial.print(peripheral.advertisedServiceUuid(i));
+  //      Serial.print(" ");
+  //      Serial.print(service.characteristicCount());
+  ////      Serial.print(peripheral.discoverService(peripheral.advertisedServiceUuid(i).c_str()));
+  ////      Serial.print(peripheral.hasService(peripheral.advertisedServiceUuid(i).c_str()));
+  //    }
+  //  }
+  //  Serial.println();
+}
+
 void explorerPeripheral(BLEDevice peripheral)
 {
-  if (peripheral.connect())
+  BLE.stopScan();
+  Serial.print("\t");
+  int attempts = 0;
+  while (!peripheral.connected() && attempts < 5)
   {
-    Serial.println("Connected");
+    peripheral.connect();
+    delay(1000);
+    attempts++;
+    Serial.print(".");
   }
-  else
+  Serial.println();
+  if (!peripheral.connected())
   {
+    BLE.scan();
     return;
   }
-
-  Serial.println("Discovering attributes ...");
-  if (peripheral.discoverAttributes())
+  if (!peripheral.discoverAttributes())
   {
-    Serial.println("Attributes discovered");
-  }
-  else
-  {
-    Serial.println("Attribute discovery failed!");
+    Serial.println("\tAttribute discovery failed!");
     peripheral.disconnect();
+    BLE.scan();
     return;
   }
-  Serial.println();
-  Serial.print("Device name: ");
+  Serial.print("\tDevice name: ");
   Serial.println(peripheral.deviceName());
-  Serial.print("Appearance: 0x");
-  Serial.println(peripheral.appearance(), HEX);
-  Serial.println();
-
   for (int i = 0; i < peripheral.serviceCount(); i++)
   {
     BLEService service = peripheral.service(i);
-    exploreService(service);
+    if (service.uuid()[0] == '1' && service.uuid()[1] == '8')
+      exploreService(service);
   }
-  peripheral.disconnect();  
+  peripheral.disconnect();
+  BLE.scan();
 }
 //------------------------------------------------------------------------------
 void exploreService(BLEService service)
 {
-  Serial.print("Service ");
+  Serial.print("\tService ");
   Serial.println(service.uuid());
 
   for (int i = 0; i < service.characteristicCount(); i++)
@@ -53,7 +88,7 @@ void exploreService(BLEService service)
 //------------------------------------------------------------------------------
 void exploreCharacteristic(BLECharacteristic characteristic)
 {
-  Serial.print("\tCharacteristic ");
+  Serial.print("\t\tCharacteristic ");
   Serial.print(characteristic.uuid());
   Serial.print(", properties 0x");
   Serial.print(characteristic.properties(), HEX);
@@ -90,14 +125,17 @@ void exploreDescriptor(BLEDescriptor descriptor)
 //------------------------------------------------------------------------------
 void printData(const unsigned char data[], int length)
 {
-  for (int i = 0; i < length; i++) {
+  for (int i = 0; i < length; i++)
+  {
     unsigned char b = data[i];
+    //
+    //    if (b < 16)
+    //    {
+    //      Serial.print("0");
+    //    }
 
-    if (b < 16) {
-      Serial.print("0");
-    }
-
-    Serial.print(b, HEX);
+    //    Serial.print(b, HEX);
+    Serial.print(char(b));
   }
 }
 //------------------------------------------------------------------------------
@@ -107,9 +145,7 @@ void printPreripheralInfo(BLEDevice &peripheral)
   Serial.print("\t'");
   Serial.print(peripheral.localName());
   Serial.print("'");
-  Serial.print((peripheral.localName().length() < 4) ? "\t\t" : "\t");  
-  Serial.print(peripheral.advertisedServiceUuid());
-  Serial.print((peripheral.advertisedServiceUuid()) ? "\t\t" : "\t\t");    
+  Serial.print((peripheral.localName().length() < 4) ? "\t\t" : "\t");
   Serial.print(peripheral.rssi());
   Serial.println();
 }
@@ -119,7 +155,7 @@ bool deviceIsNew(BLEDevice &peripheral)
   bool newDev = true;
   for (int i = 0 ; i < numDevices; i++)
   {
-    if (peripheral.address().equals(foundDevices[i]))
+    if (peripheral == foundDevices[i])
     {
       newDev = false;
       break;
@@ -133,7 +169,7 @@ void printHeader()
 {
   Serial.print("Address\t\t\t");
   Serial.print("Local Name\t");
-  Serial.print("Service UUID\t");  
-  Serial.print("RSSI\n");  
+  Serial.print("Service UUID\t");
+  Serial.print("RSSI\n");
   Serial.println();
 }
