@@ -13,7 +13,7 @@ Documentation and Code Examples for Design Informatics Home Kit
 	- [Additional notes](#additional-notes)
 	- [Code Examples](#code-examples)
 		- [Sensors](#sensors)
-		- [Capacitive Sensing](#capacitive-sensing)
+			- [Capacitive Sensing](#capacitive-sensing)
 		- [BLE](#ble)
 			- [Bluetooth Spy](#bluetooth-spy)
 			- [Unity Controller](#unity-controller)
@@ -21,7 +21,7 @@ Documentation and Code Examples for Design Informatics Home Kit
 		- [MQTT](#mqtt)
 			- [Remote Send / Receive](#remote-send-receive)
 			- [Sensor Logger](#sensor-logger)
-		- [Chat Server](#chat-server)
+			- [Chat Server](#chat-server)
 		- [APIs](#apis)
 			- [List of APIs](#list-of-apis)
 		- [IFTTT](#ifttt)
@@ -30,8 +30,6 @@ Documentation and Code Examples for Design Informatics Home Kit
 		- [Nano Pinout](#nano-pinout)
 
 <!-- /TOC -->
-
-
 
 ## Whats in the kit
 list of components
@@ -67,7 +65,7 @@ Example project code
 
 ### Sensors
 
-### Capacitive Sensing
+#### Capacitive Sensing
 
 (although we might need some 1M resistors...)
 Use the copper tape to make a 3D controller, connect to something interesting

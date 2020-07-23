@@ -22,6 +22,7 @@ void setup()
   delay(3000);
   Serial.println("BLE Central - Peripheral Explorer");
   BLE.scan();
+  printHeader();
 }
 //------------------------------------------------------------------------------
 void loop()

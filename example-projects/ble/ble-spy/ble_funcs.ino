@@ -4,15 +4,12 @@
 
 void explorerPeripheral(BLEDevice peripheral)
 {
-  Serial.println("Connecting ...");
-
   if (peripheral.connect())
   {
     Serial.println("Connected");
   }
   else
   {
-    Serial.println("Failed to connect!");
     return;
   }
 
@@ -39,11 +36,7 @@ void explorerPeripheral(BLEDevice peripheral)
     BLEService service = peripheral.service(i);
     exploreService(service);
   }
-
-  Serial.println();
-  Serial.println("Disconnecting ...");
-  peripheral.disconnect();
-  Serial.println("Disconnected");
+  peripheral.disconnect();  
 }
 //------------------------------------------------------------------------------
 void exploreService(BLEService service)
@@ -110,13 +103,13 @@ void printData(const unsigned char data[], int length)
 //------------------------------------------------------------------------------
 void printPreripheralInfo(BLEDevice &peripheral)
 {
-  Serial.print("Found ");
   Serial.print(peripheral.address());
-  Serial.print(" '");
+  Serial.print("\t'");
   Serial.print(peripheral.localName());
-  Serial.print("' ");
+  Serial.print("'");
+  Serial.print((peripheral.localName().length() < 4) ? "\t\t" : "\t");  
   Serial.print(peripheral.advertisedServiceUuid());
-  Serial.print(" RSSI: ");
+  Serial.print((peripheral.advertisedServiceUuid()) ? "\t\t" : "\t\t");    
   Serial.print(peripheral.rssi());
   Serial.println();
 }
@@ -135,3 +128,12 @@ bool deviceIsNew(BLEDevice &peripheral)
   return newDev;
 }
 //------------------------------------------------------------------------------
+
+void printHeader()
+{
+  Serial.print("Address\t\t\t");
+  Serial.print("Local Name\t");
+  Serial.print("Service UUID\t");  
+  Serial.print("RSSI\n");  
+  Serial.println();
+}
