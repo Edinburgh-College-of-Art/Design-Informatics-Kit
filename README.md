@@ -103,7 +103,7 @@ Services:
 - Adafruit IO
 - ThingSpeak
 
-### Chat Server
+#### Chat Server
 
 Take text over the serial input, display it on the screen and send it out over MQTT. Display incoming text on the display in a different colour
 

@@ -6,6 +6,10 @@
 //------------------------------------------------------------------------------
 #include <ArduinoBLE.h>
 //------------------------------------------------------------------------------
+const int maxDevices = 50;
+int numDevices = 0;
+String foundDevices[maxDevices];
+//------------------------------------------------------------------------------
 void setup()
 {
   Serial.begin(9600);
@@ -15,18 +19,24 @@ void setup()
   {
     halt("starting BLE failed!");
   }
-
+  delay(3000);
   Serial.println("BLE Central - Peripheral Explorer");
   BLE.scan();
 }
 //------------------------------------------------------------------------------
-void loop() 
+void loop()
 {
   BLEDevice peripheral = BLE.available();
 
-  if (peripheral) 
+  if (peripheral)
   {
-    printPreripheralInfo(peripheral);
+    if (deviceIsNew(peripheral) && numDevices < maxDevices)
+    {
+      printPreripheralInfo(peripheral);
+      explorerPeripheral(peripheral);
+      numDevices++;
+      foundDevices[numDevices] = peripheral.address();
+    }
   }
 }
 //------------------------------------------------------------------------------

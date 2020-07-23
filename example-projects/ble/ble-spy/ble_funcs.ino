@@ -1,27 +1,27 @@
 /*
- * Helper Functions for working worth BLE
- */
+   Helper Functions for working worth BLE
+*/
 
-void explorerPeripheral(BLEDevice peripheral) 
+void explorerPeripheral(BLEDevice peripheral)
 {
   Serial.println("Connecting ...");
 
-  if (peripheral.connect()) 
+  if (peripheral.connect())
   {
     Serial.println("Connected");
-  } 
-  else 
+  }
+  else
   {
     Serial.println("Failed to connect!");
     return;
   }
 
   Serial.println("Discovering attributes ...");
-  if (peripheral.discoverAttributes()) 
+  if (peripheral.discoverAttributes())
   {
     Serial.println("Attributes discovered");
-  } 
-  else 
+  }
+  else
   {
     Serial.println("Attribute discovery failed!");
     peripheral.disconnect();
@@ -34,7 +34,7 @@ void explorerPeripheral(BLEDevice peripheral)
   Serial.println(peripheral.appearance(), HEX);
   Serial.println();
 
-  for (int i = 0; i < peripheral.serviceCount(); i++) 
+  for (int i = 0; i < peripheral.serviceCount(); i++)
   {
     BLEService service = peripheral.service(i);
     exploreService(service);
@@ -46,30 +46,30 @@ void explorerPeripheral(BLEDevice peripheral)
   Serial.println("Disconnected");
 }
 //------------------------------------------------------------------------------
-void exploreService(BLEService service) 
+void exploreService(BLEService service)
 {
   Serial.print("Service ");
   Serial.println(service.uuid());
 
-  for (int i = 0; i < service.characteristicCount(); i++) 
+  for (int i = 0; i < service.characteristicCount(); i++)
   {
     BLECharacteristic characteristic = service.characteristic(i);
     exploreCharacteristic(characteristic);
   }
 }
 //------------------------------------------------------------------------------
-void exploreCharacteristic(BLECharacteristic characteristic) 
+void exploreCharacteristic(BLECharacteristic characteristic)
 {
   Serial.print("\tCharacteristic ");
   Serial.print(characteristic.uuid());
   Serial.print(", properties 0x");
   Serial.print(characteristic.properties(), HEX);
 
-  if (characteristic.canRead()) 
+  if (characteristic.canRead())
   {
     characteristic.read();
 
-    if (characteristic.valueLength() > 0) 
+    if (characteristic.valueLength() > 0)
     {
       Serial.print(", value 0x");
       printData(characteristic.value(), characteristic.valueLength());
@@ -77,14 +77,14 @@ void exploreCharacteristic(BLECharacteristic characteristic)
   }
   Serial.println();
 
-  for (int i = 0; i < characteristic.descriptorCount(); i++) 
+  for (int i = 0; i < characteristic.descriptorCount(); i++)
   {
     BLEDescriptor descriptor = characteristic.descriptor(i);
     exploreDescriptor(descriptor);
   }
 }
 //------------------------------------------------------------------------------
-void exploreDescriptor(BLEDescriptor descriptor) 
+void exploreDescriptor(BLEDescriptor descriptor)
 {
   Serial.print("\t\tDescriptor ");
   Serial.print(descriptor.uuid());
@@ -95,7 +95,7 @@ void exploreDescriptor(BLEDescriptor descriptor)
   Serial.println();
 }
 //------------------------------------------------------------------------------
-void printData(const unsigned char data[], int length) 
+void printData(const unsigned char data[], int length)
 {
   for (int i = 0; i < length; i++) {
     unsigned char b = data[i];
@@ -116,5 +116,22 @@ void printPreripheralInfo(BLEDevice &peripheral)
   Serial.print(peripheral.localName());
   Serial.print("' ");
   Serial.print(peripheral.advertisedServiceUuid());
+  Serial.print(" RSSI: ");
+  Serial.print(peripheral.rssi());
   Serial.println();
 }
+//------------------------------------------------------------------------------
+bool deviceIsNew(BLEDevice &peripheral)
+{
+  bool newDev = true;
+  for (int i = 0 ; i < numDevices; i++)
+  {
+    if (peripheral.address().equals(foundDevices[i]))
+    {
+      newDev = false;
+      break;
+    }
+  }
+  return newDev;
+}
+//------------------------------------------------------------------------------
