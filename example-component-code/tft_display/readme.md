@@ -30,3 +30,5 @@ All examples will use the following wiring
 | D8   | D/C       |
 
 ### Diagram
+
+![Wiring diagram for TFT 1.44](./tft144_wiring.jpg)
