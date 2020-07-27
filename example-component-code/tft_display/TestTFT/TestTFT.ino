@@ -65,9 +65,9 @@ void setup(void)
   testlines(ST77XX_YELLOW);
   delay(500);
   //----------------------------------------------------------------------------
-  // optimized lines  
+  // optimized lines
   testfastlines(ST77XX_RED, ST77XX_BLUE);
-  delay(500); 
+  delay(500);
   //----------------------------------------------------------------------------
   testdrawrects(ST77XX_GREEN);
   delay(500);
@@ -78,7 +78,7 @@ void setup(void)
   tft.fillScreen(ST77XX_BLACK);
   testfillcircles(10, ST77XX_BLUE);
   testdrawcircles(10, ST77XX_WHITE);
-  delay(500); 
+  delay(500);
   //----------------------------------------------------------------------------
   testroundrects();
   delay(500);
@@ -300,22 +300,55 @@ void tftPrintTest()
 //------------------------------------------------------------------------------
 void mediabuttons()
 {
+  const int marginY = 10;
+  const int rectHeight = (getHeight() - (marginY * 3)) / 2;
+
   // play
   tft.fillScreen(ST77XX_BLACK);
-  tft.fillRoundRect(25, 10, 78, 60, 8, ST77XX_WHITE);
-  tft.fillTriangle(42, 20, 42, 60, 90, 40, ST77XX_RED);
+  tft.fillRoundRect(25, 10, 78, rectHeight , 8, ST77XX_WHITE);
+  tft.fillTriangle(42, marginY + 5,
+                   42, marginY + rectHeight - 5,
+                   90, marginY + rectHeight / 2,
+                   ST77XX_GREEN);
   delay(500);
   // pause
-  tft.fillRoundRect(25, 90, 78, 60, 8, ST77XX_WHITE);
-  tft.fillRoundRect(39, 98, 20, 45, 5, ST77XX_GREEN);
-  tft.fillRoundRect(69, 98, 20, 45, 5, ST77XX_GREEN);
+  tft.fillRoundRect(25, (marginY * 2) + rectHeight,
+                    78, rectHeight ,
+                    8, ST77XX_WHITE);
+  tft.fillRoundRect(39, (marginY * 2) + (rectHeight) + 5,
+                    20, rectHeight - 10,
+                    5, ST77XX_GREEN);
+  tft.fillRoundRect(69, (marginY * 2) + (rectHeight) + 5,
+                    20, rectHeight - 10,
+                    5, ST77XX_GREEN);
   delay(500);
   // play color
-  tft.fillTriangle(42, 20, 42, 60, 90, 40, ST77XX_BLUE);
+  tft.fillTriangle(42, marginY + 5,
+                   42, marginY + rectHeight - 5,
+                   90, marginY + rectHeight / 2,
+                   ST77XX_BLUE);
   delay(50);
   // pause color
-  tft.fillRoundRect(39, 98, 20, 45, 5, ST77XX_RED);
-  tft.fillRoundRect(69, 98, 20, 45, 5, ST77XX_RED);
+  tft.fillRoundRect(39, (marginY * 2) + (rectHeight) + 5,
+                    20, rectHeight - 10,
+                    5, ST77XX_RED);
+  tft.fillRoundRect(69, (marginY * 2) + (rectHeight) + 5,
+                    20, rectHeight - 10,
+                    5, ST77XX_RED);
   // play color
-  tft.fillTriangle(42, 20, 42, 60, 90, 40, ST77XX_GREEN);
+  tft.fillTriangle(42, marginY + 5,
+                   42, marginY + rectHeight - 5,
+                   90, marginY + rectHeight / 2,
+                   ST77XX_GREEN);
+}
+
+const unsigned int getWidth()
+{
+  return 128;
+}
+
+
+const unsigned int getHeight()
+{
+  return 128;
 }
