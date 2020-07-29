@@ -40,7 +40,7 @@ list of components
 | Arduino Nano 33 IoT      | [Getting started with the Arduino NANO 33 IoT](https://www.arduino.cc/en/Guide/NANO33IoT)          |          |
 | Servo                    |               |          |
 | Temperature Sensor       | [Grove DHT11](https://wiki.seeedstudio.com/Grove-TemperatureAndHumidity_Sensor/)              |          |
-| Display + SD Card holder |               |          |
+| Display + SD Card holder |       [Adafruit 1.44" Colour TFT with Micro SD Socket](https://learn.adafruit.com/adafruit-1-44-color-tft-with-micro-sd-socket)        |          |
 | RFID                     |               |          |
 | Copper tape              |               |          |
 | Velostat                 |               |          |
@@ -124,3 +124,6 @@ Some extra tidbits to make life easier
 ### Nano Pinout
 
 Pins on the nano are labelled in such small typeface it can be difficult to read. [This .pdf](./extras/Nano_33_IoT_Pinout_cheatsheet.pdf) can be printed out, placed over your breadboard and the Arduino can plugged in on top. Get creative and try making your own.
+
+
+![](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide/blob/master/images/Arduino%20Nano%2033%20IoT%20pinout%20diagram.png?raw=true)

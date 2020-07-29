@@ -43,14 +43,53 @@ void exploreService(BLEService service)
 {
   Serial.print("\tService ");
   Serial.println(service.uuid());
-
-  for (int i = 0; i < service.characteristicCount(); i++)
+  if (String(service.uuid()).equals("180f"))
   {
-    BLECharacteristic characteristic = service.characteristic(i);
-    exploreCharacteristic(characteristic);
+    Serial.print("\tBattery ");
+    for (int i = 0; i < service.characteristicCount(); i++)
+    {
+      BLECharacteristic characteristic = service.characteristic(i);
+      if (String(characteristic.uuid()).equals("2a19"))
+      {
+        Serial.print("\tBattery ");
+        printBatteryLevel(characteristic);
+      }
+    }
+  }
+  else
+  {
+    for (int i = 0; i < service.characteristicCount(); i++)
+    {
+      BLECharacteristic characteristic = service.characteristic(i);
+      exploreCharacteristic(characteristic);
+    }
   }
 }
 //------------------------------------------------------------------------------
+void printBatteryLevel(BLECharacteristic characteristic)
+{
+  if (characteristic.canRead())
+  {
+    Serial.print("\tBattery ");
+    characteristic.read();
+
+    if (characteristic.valueLength() > 0)
+    {
+      Serial.print(", value 0x");
+      Serial.print(characteristic.valueLength());
+
+      Serial.println((*(uint16_t*)characteristic.value()));
+      
+      for (int i = 0; i < characteristic.valueLength(); i++)
+      {
+        unsigned char b = characteristic.value()[i];
+        Serial.print(b);
+      }
+    }
+  }
+  Serial.println();
+}
+
 void exploreCharacteristic(BLECharacteristic characteristic)
 {
   Serial.print("\t\tCharacteristic ");
@@ -93,13 +132,6 @@ void printData(const unsigned char data[], int length)
   for (int i = 0; i < length; i++)
   {
     unsigned char b = data[i];
-    //
-    //    if (b < 16)
-    //    {
-    //      Serial.print("0");
-    //    }
-
-    //    Serial.print(b, HEX);
     Serial.print(char(b));
   }
 }
