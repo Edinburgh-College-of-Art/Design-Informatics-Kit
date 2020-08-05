@@ -80,6 +80,8 @@ Get the Arduino to look for all the bluetooth devices in range. Light up a certa
 
 Get unity responding to data coming in from the Arduino to move 3d objects around
 
+  - [Ardity](https://github.com/dwilches/Ardity)
+
 #### Talk to Phone
 
 Send some data to a phone app, or respond to it in some way – pretend to be a smart light.
@@ -127,3 +129,11 @@ Pins on the nano are labelled in such small typeface it can be difficult to read
 
 
 ![](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide/blob/master/images/Arduino%20Nano%2033%20IoT%20pinout%20diagram.png?raw=true)
+
+## Further Resources
+
+### LinkedIn Learning Courses
+
+- [Learning Arduino: Foundations](https://www.linkedin.com/learning/learning-arduino-foundations-2/getting-started-with-arduino?u=50251009&auth=true)
+- [Learning Arduino: Interfacing with Hardware](https://www.linkedin.com/learning/learning-arduino-interfacing-with-hardware/open-up-your-digital-world-with-arduino?u=50251009&auth=true)
+- [C++ Essentials](https://www.linkedin.com/learning/c-plus-plus-essential-training-2/about-this-course?u=50251009&auth=true)
