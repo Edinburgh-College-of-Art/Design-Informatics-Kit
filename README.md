@@ -111,7 +111,7 @@ Take text over the serial input, display it on the screen and send it out over M
 
 #### List of APIs
 
-See the Public list APIs.
+[See the Public list APIs](https://public-apis.io) for some inspiration
 
 ### IFTTT
 
