@@ -80,7 +80,7 @@ Get the Arduino to look for all the bluetooth devices in range. Light up a certa
 
 Get unity responding to data coming in from the Arduino to move 3d objects around
 
-  - [Ardity](https://github.com/dwilches/Ardity)
+  - [Ardity](https://ardity.dwilches.com)
 
 #### Talk to Phone
 
@@ -128,7 +128,7 @@ Some extra tidbits to make life easier
 Pins on the nano are labelled in such small typeface it can be difficult to read. [This .pdf](./extras/Nano_33_IoT_Pinout_cheatsheet.pdf) can be printed out, placed over your breadboard and the Arduino can plugged in on top. Get creative and try making your own.
 
 
-![](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide/blob/master/images/Arduino%20Nano%2033%20IoT%20pinout%20diagram.png?raw=true)
+![](https://content.arduino.cc/assets/Pinout-NANO33IoT_latest.png)
 
 ## Further Resources
 
