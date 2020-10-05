@@ -31,9 +31,7 @@ Documentation and Code Examples for Design Informatics Home Kit
 
 <!-- /TOC -->
 
-## Whats in the kit
-list of components
-
+## What is in the kit?
 
 | Component                | documentation | Use case |
 | ------------------------ | ------------- | -------- |
