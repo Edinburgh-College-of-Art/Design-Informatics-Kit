@@ -33,20 +33,16 @@ Documentation and Code Examples for Design Informatics Home Kit
 
 ## What is in the kit?
 
-| Component                | documentation | Use case |
-| ------------------------ | ------------- | -------- |
-| Arduino Nano 33 IoT      | [Getting started with the Arduino NANO 33 IoT](https://www.arduino.cc/en/Guide/NANO33IoT)          |          |
-| Servo                    |               |          |
-| Temperature Sensor       | [Grove DHT11](https://wiki.seeedstudio.com/Grove-TemperatureAndHumidity_Sensor/)              |          |
-| Display + SD Card holder |       [Adafruit 1.44" Colour TFT with Micro SD Socket](https://learn.adafruit.com/adafruit-1-44-color-tft-with-micro-sd-socket)        |          |
-| RFID                     |               |          |
-| Copper tape              |               |          |
-| Velostat                 |               |          |
-| Buttons                  |      [Grove Dual Buttons](https://wiki.seeedstudio.com/Grove-Dual-Button/)         |          |
-| NeoPixel Ring            |      [The Magic of NeoPixels](https://learn.adafruit.com/adafruit-neopixel-uberguide/the-magic-of-neopixels)         |          |
-| conductive fabric        |               |          |
-| conductive thread        |               |          |
-| Polymorph                |               |          |
+### Checklist
+
+- [ ] Arduino Nano 33 IoT [[Docs]](https://www.arduino.cc/en/Guide/NANO33IoT)
+- [ ] Breadboard
+- [ ] Jumper Wires
+- [ ] Crocodile Clips
+- [ ] micro-USB Cable
+- [ ] Temperature Sensor [[Docs]](https://wiki.seeedstudio.com/Grove-TemperatureAndHumidity_Sensor/)
+- [ ] Adafruit 1.44" Colour TFT [[Docs]](https://learn.adafruit.com/adafruit-1-44-color-tft-with-micro-sd-socket)
+- [ ] NeoPixel Ring [[Docs]](https://learn.adafruit.com/adafruit-neopixel-uberguide/the-magic-of-neopixels)
 
 
 ## Setup
