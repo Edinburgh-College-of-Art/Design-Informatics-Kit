@@ -49,11 +49,9 @@ Documentation and Code Examples for Design Informatics Home Kit
 
 See the [Getting Started guide](./getting-started.md) for instructions on setting up to use your kit.
 
-## Additional notes
+***
 
-Notes on usage and helpful techniques
-
-## Code Examples
+<!-- ## Code Examples
 
 Example project code
 
@@ -99,19 +97,26 @@ Services:
 
 #### Chat Server
 
-Take text over the serial input, display it on the screen and send it out over MQTT. Display incoming text on the display in a different colour
+Take text over the serial input, display it on the screen and send it out over MQTT. Display incoming text on the display in a different colour -->
+
+## Additional notes
+
+Notes on usage and helpful techniques
+
+***
+
 
 ### APIs
 
-#### List of APIs
+An API is what allows you to interact with someone else's application. [See the Public list APIs](https://public-apis.io) for some inspiration.
 
-[See the Public list APIs](https://public-apis.io) for some inspiration
-
-### IFTTT
+<!-- #### IFTTT
 
 Connect the Arduino to an IFTTT recipe
 
-### ThingSpeak
+#### ThingSpeak -->
+
+***
 
 ## Extras
 
