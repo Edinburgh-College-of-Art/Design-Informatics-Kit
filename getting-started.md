@@ -10,6 +10,20 @@ Before you start programming your Arduino you will need to:
 - [Download Arduino IDE](https://www.arduino.cc/en/Main/Software#download): Download the relevant version for your operating system.
 - [Install Arduino SAMD Core](https://www.arduino.cc/en/Guide/NANO33IoT#use-your-arduino-nano-33-iot-on-the-arduino-desktop-ide): simply follow the instructions in the link
 
+### Setup Video
+
+Tutorials videos cover the setup material below. Follow along if you are having any difficulty setting up your Arduino
+
+1. Installing the Arduino IDE
+2. Configuring the Arduino IDE
+3. Setting up the Nano 33 IoT
+4. First sketches and debugging
+5. First LED blink/fade exercise
+6. First Potentiometer exercise
+7. Adding both together
+
+
+
 
 ### [Upload Your First Sketch](https://www.arduino.cc/en/Guide/NANO33IoT#use-your-arduino-nano-33-iot-with-the-arduino-iot-cloud#open-your-first-sketch)
 
