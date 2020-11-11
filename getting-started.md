@@ -2,7 +2,6 @@
 
 This document will cover how to install the necessary software and libraries to getting started with your Arduino kit.
 
-
 ## Setup
 
 Before you start programming your Arduino you will need to:
@@ -14,16 +13,13 @@ Before you start programming your Arduino you will need to:
 
 Tutorials videos cover the setup material below. Follow along if you are having any difficulty setting up your Arduino
 
-1. Installing the Arduino IDE
-2. Configuring the Arduino IDE
-3. Setting up the Nano 33 IoT
-4. First sketches and debugging
-5. First LED blink/fade exercise
-6. First Potentiometer exercise
-7. Adding both together
-
-
-
+1. [Installing the Arduino IDE](https://media.ed.ac.uk/media/H%26F+1+Installing+Arduino/1_68utunof)
+2. [Configuring the Arduino IDE](https://media.ed.ac.uk/media/H%26F+2+Configuring+Arduino+IDE/1_7qg1v42a)
+3. [Setting up the Nano 33 IoT](https://media.ed.ac.uk/media/H%26F+3+Nano+33+IoT/1_v3jt5sz1)
+4. [First sketches and debugging](https://media.ed.ac.uk/media/H%26F+4+Sketches+and+debug/1_v8gn9ymh)
+5. [First LED blink/fade exercise]()
+6. [First Potentiometer exercise]()
+7. [Adding both together]()
 
 ### [Upload Your First Sketch](https://www.arduino.cc/en/Guide/NANO33IoT#use-your-arduino-nano-33-iot-with-the-arduino-iot-cloud#open-your-first-sketch)
 
@@ -49,7 +45,6 @@ If you have any problem with the above, it can help sometimes to restart your co
 
 ### Basic Examples
 
-
 #### Blink
 
 Arduino & LED on breadboard (resistors?)
@@ -59,7 +54,6 @@ Arduino & LED on breadboard (resistors?)
 Add potentiometer to breadboard (input data, make decision, make LED blink) – Fade
 
 #### SerialRead
-
 
 ### Arduino Libraries
 
