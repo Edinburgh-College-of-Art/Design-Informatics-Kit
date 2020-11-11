@@ -55,11 +55,37 @@ Add potentiometer to breadboard (input data, make decision, make LED blink) – 
 
 #### SerialRead
 
+***
+
 ### Arduino Libraries
 
 Libraries required to run the examples.
 
-### WiFi Firmware Updates
+#### On-Board IMU (Accelerometer / gyroscope)
+
+The Inertial measurement unit (IMU) consists of a combined accelerometer and gyroscope. To use the IMU you will need to download the `Arduino_LSM6DS3` library via the Arduino Library Manager.
+
+![Arduino Library Manager](https://www.arduino.cc/wiki/static/4dbf91a47e3282d7c34281217553981a/b28e6/IMU_LIB.jpg)
+
+#### Design Informatics Board
+
+Interfacing with the [Design Informatics Board](https://github.com/Edinburgh-College-of-Art/DesignInformaticsPCB) requires the `Design Informatics Base` Library
+
+![](extras/img/DI-Board-Library-Manager.png)
+
+#### Temperature Sensor
+
+The included Temperature Sensor is Grove DHT11. Se the Grove [Documentation](https://wiki.seeedstudio.com/Grove-TemperatureAndHumidity_Sensor/) for a full breakdown. The DHT11 is a common sensor, so any library will be fine. We recommend using the `DHT Sensor Library` by Adafruit available via the Library Manager
+
+![](/extras/img/Dht-Library.jpg)
+
+#### WiFi
+
+The Nano uses the WiFiNina library
+
+![](https://www.arduino.cc/en/uploads/Reference/WiFiNINA_LibMan.jpg)
+
+##### WiFi Firmware Updates
 
 Make sure your wifi module is the latest firmware. If you've downloaded Arduino IDE before, check your WifiNINA library and make sure it is at version `1.6.0`.
 
