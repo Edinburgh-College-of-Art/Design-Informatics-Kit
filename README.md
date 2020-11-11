@@ -50,13 +50,21 @@ Notes on usage and helpful techniques
 
 ***
 
-### Sensors
+### Libraries
+
+To use either the onboard IMU, DI Board or other sensor, you will first need to install the relevant library. See below for which libraries to install
 
 #### On-Board IMU (Accelerometer / gyroscope)
 
 The Inertial measurement unit (IMU) consists of a combined accelerometer and gyroscope. To use the IMU you will need to download the `Arduino_LSM6DS3` library via the Arduino Library Manager.
 
 ![Arduino Library Manager](https://www.arduino.cc/wiki/static/4dbf91a47e3282d7c34281217553981a/b28e6/IMU_LIB.jpg)
+
+#### Design Informatics Board
+
+Interfacing with the [Design Informatics Board](https://github.com/Edinburgh-College-of-Art/DesignInformaticsPCB) requires the `Design Informatics Base` Library
+
+![](extras/img/DI-Board-Library-Manager.png)
 
 #### Temperature Sensor
 
